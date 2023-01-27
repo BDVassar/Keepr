@@ -72,4 +72,14 @@ public class KeepsRepository
     int rows = _db.Execute(sql, keepData);
     return rows > 0;
   }
+
+  internal bool Remove(int keepId)
+  {
+    string sql = @"
+    DELETE FROM keeps
+    WHERE id = @keepId;
+    ";
+    int rows = _db.Execute(sql, new { keepId });
+    return rows > 0;
+  }
 }

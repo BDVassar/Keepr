@@ -17,6 +17,22 @@ public class KeepsService
     return keep;
   }
 
+
+  internal List<Keep> GetAll()
+  {
+    List<Keep> keeps = _repo.GetAll();
+    return keeps;
+  }
+
+  internal Keep GetOne(int id)
+  {
+    Keep keep = _repo.GetOne(id);
+    if (keep == null)
+    {
+      throw new Exception("No Keep by that Id");
+    }
+    return keep;
+  }
   internal Keep Edit(Keep keepData, string accountId)
   {
     Keep keep = this.GetOne(keepData.Id);
@@ -38,19 +54,15 @@ public class KeepsService
     return (keepData);
   }
 
-  internal List<Keep> GetAll()
+  internal String Remove(string accountId, int keepId)
   {
-    List<Keep> keeps = _repo.GetAll();
-    return keeps;
-  }
-
-  internal Keep GetOne(int id)
-  {
-    Keep keep = _repo.GetOne(id);
-    if (keep == null)
+    Keep keep = this.GetOne(keepId);
+    if (keep.CreatorId != accountId)
     {
-      throw new Exception("No Keep by that Id");
+      throw new Exception("You do not have permission to delete this Keep.");
     }
-    return keep;
+    bool deleted = _repo.Remove(keepId);
+    if (deleted == false) throw new Exception($"{keep.Name} was not deleted");
+    return $"{keep.Name} was deleted";
   }
 }
