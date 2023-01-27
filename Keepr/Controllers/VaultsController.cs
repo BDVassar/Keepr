@@ -46,4 +46,38 @@ public class VaultsController : ControllerBase
       return BadRequest(e.Message);
     }
   }
+
+  [HttpPut("{id}")]
+  [Authorize]
+  public async Task<ActionResult<Vault>> Edit([FromBody] Vault vaultData, int id)
+  {
+    try
+    {
+      Account account = await _auth.GetUserInfoAsync<Account>(HttpContext);
+      vaultData.Id = id;
+      Vault vault = _vaultsService.Edit(vaultData, account.Id);
+      vault.creator = account;
+      return vault;
+    }
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
+
+  [HttpDelete("{id}")]
+  [Authorize]
+  public async Task<ActionResult<string>> Remove(int id)
+  {
+    try
+    {
+      Account account = await _auth.GetUserInfoAsync<Account>(HttpContext);
+      string message = _vaultsService.Remove(id, account.Id);
+      return message;
+    }
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
 }

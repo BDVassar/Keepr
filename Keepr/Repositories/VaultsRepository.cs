@@ -23,6 +23,21 @@ public class VaultsRepository
     return vaultData;
   }
 
+  internal bool Edit(Vault vault)
+  {
+    string sql = @"
+    UPDATE vaults
+      SET
+      name = @name,
+      description = @description,
+      img = @img,
+      isPrivate = @isPrivate
+      WHERE id = @id;
+    ";
+    int rows = _db.Execute(sql, vault);
+    return rows > 0;
+  }
+
   internal Vault GetOne(int id)
   {
     string sql = @"
@@ -34,5 +49,15 @@ public class VaultsRepository
 
     Vault vault = _db.Query<Vault>(sql, new { id }).FirstOrDefault();
     return vault;
+  }
+
+  internal bool Remove(int id)
+  {
+    string sql = @"
+    DELETE FROM vaults
+    WHERE id = @id;
+    ";
+    int rows = _db.Execute(sql, new { id });
+    return rows > 0;
   }
 }

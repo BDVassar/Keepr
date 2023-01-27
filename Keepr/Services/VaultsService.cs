@@ -15,12 +15,34 @@ public class VaultsService
     return vault;
   }
 
+  internal Vault Edit(Vault vaultData, string accountId)
+  {
+    Vault vault = this.GetOne(accountId, vaultData.Id);
+    if (vault.CreatorId != accountId) throw new Exception("You do not have permission to edit this vault.");
+    vault.Name = vaultData.Name ?? vault.Name;
+    vault.Description = vaultData.Description ?? vault.Description;
+    vault.Img = vaultData.Img ?? vault.Img;
+    vault.IsPrivate = vaultData.IsPrivate ?? vault.IsPrivate;
+    bool updated = _repo.Edit(vault);
+    if (updated == false) throw new Exception($"{vault.Name} was not updated");
+    return vault;
+  }
+
   internal Vault GetOne(string accountId, int id)
   {
     Vault vault = _repo.GetOne(id);
     if (vault == null) throw new Exception("No Vault by that id");
-    if (vault.IsPrivate && vault.CreatorId != accountId) throw new Exception("You do not have permission to see this vault.");
+    if (vault.IsPrivate == true && vault.CreatorId != accountId) throw new Exception("You do not have permission to see this vault.");
     return vault;
 
+  }
+
+  internal string Remove(int id, string accountId)
+  {
+    Vault vault = this.GetOne(accountId, id);
+    if (vault.CreatorId != accountId) throw new Exception("You do not have permission to delete this vault.");
+    bool deleted = _repo.Remove(id);
+    if (deleted == false) throw new Exception($"{vault.Name} was not deleted");
+    return $"{vault.Name} was deleted";
   }
 }
