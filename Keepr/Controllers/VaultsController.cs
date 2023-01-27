@@ -12,4 +12,38 @@ public class VaultsController : ControllerBase
     _vaultsService = vaultsService;
     _auth = auth;
   }
+
+  [HttpPost]
+  [Authorize]
+  public async Task<ActionResult<Vault>> Create([FromBody] Vault vaultData)
+  {
+    try
+    {
+      Account account = await _auth.GetUserInfoAsync<Account>(HttpContext);
+      vaultData.CreatorId = account.Id;
+      Vault vault = _vaultsService.Create(vaultData);
+      vault.creator = account;
+      return vault;
+    }
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
+
+  [HttpGet("{id}")]
+  public async Task<ActionResult<Vault>> GetOne(int id)
+  {
+    try
+    {
+      Account account = await _auth.GetUserInfoAsync<Account>(HttpContext);
+      Vault vault = _vaultsService.GetOne(account.Id, id);
+      vault.creator = account;
+      return Ok(vault);
+    }
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
 }

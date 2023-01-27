@@ -8,4 +8,31 @@ public class VaultsRepository
   {
     _db = db;
   }
+
+  internal Vault Create(Vault vaultData)
+  {
+    string sql = @"
+    INSERT INTO vaults
+      (creatorId, name, description, img, isPrivate)
+    VALUES
+      (@creatorId, @name, @description, @img, @isPrivate);
+      SELECT LAST_INSERT_ID();
+    ";
+    int id = _db.ExecuteScalar<int>(sql, vaultData);
+    vaultData.Id = id;
+    return vaultData;
+  }
+
+  internal Vault GetOne(int id)
+  {
+    string sql = @"
+    SELECT
+    *
+    FROM vaults
+    WHERE id = @id;
+    ";
+
+    Vault vault = _db.Query<Vault>(sql, new { id }).FirstOrDefault();
+    return vault;
+  }
 }
