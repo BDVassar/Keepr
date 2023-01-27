@@ -18,7 +18,8 @@ CREATE TABLE
         name VARCHAR(255) NOT NULL COMMENT 'Keep Name',
         description VARCHAR(1000) NOT NULL COMMENT 'Keep Description',
         img VARCHAR(255) NOT NULL COMMENT 'Keep Image',
-        views INT NOT NULL COMMENT 'Keep views',
+        views INT NOT NULL DEFAULT 0 COMMENT 'Keep views',
+        Kept INT NOT NULL DEFAULT 0 COMMENT 'Keep Saves',
         Foreign Key (creatorId) REFERENCES accounts (id) ON DELETE CASCADE
     ) DEFAULT charset utf8 COMMENT '';
 

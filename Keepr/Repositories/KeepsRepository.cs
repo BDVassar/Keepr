@@ -56,4 +56,20 @@ public class KeepsRepository
     }, new { id }).FirstOrDefault();
     return keep;
   }
+
+  internal bool Edit(Keep keepData)
+  {
+    string sql = @"
+    UPDATE keeps
+    SET
+    name = @name,
+    description = @description,
+    img = @img,
+    views = @views,
+    kept = @kept
+    WHERE id = @Id;
+    ";
+    int rows = _db.Execute(sql, keepData);
+    return rows > 0;
+  }
 }
