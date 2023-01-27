@@ -16,11 +16,13 @@ CREATE TABLE
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'pirmary key',
         creatorID VARCHAR(255) NOT NULL COMMENT 'Keep CreatorId',
         name VARCHAR(255) NOT NULL COMMENT 'Keep Name',
-        description VARCHAR(255) NOT NULL COMMENT 'Keep Description',
+        description VARCHAR(1000) NOT NULL COMMENT 'Keep Description',
         img VARCHAR(255) NOT NULL COMMENT 'Keep Image',
         views INT NOT NULL COMMENT 'Keep views',
-        Foreign Key (creatorId) REFERENCES accounts (id)
+        Foreign Key (creatorId) REFERENCES accounts (id) ON DELETE CASCADE
     ) DEFAULT charset utf8 COMMENT '';
+
+DROP TABLE keeps;
 
 -- Vault Section
 
@@ -32,8 +34,10 @@ CREATE TABLE
         description VARCHAR(255) NOT NULL COMMENT 'vault Description',
         img VARCHAR(255) NOT NULL COMMENT 'vault Image',
         isPrivate BOOLEAN NOT NULL DEFAULT false COMMENT 'vault privacy',
-        Foreign Key (creatorId) REFERENCES accounts (id)
+        Foreign Key (creatorId) REFERENCES accounts (id) ON DELETE CASCADE
     ) DEFAULT CHARSET utf8 COMMENT '';
+
+DROP TABLE vaults;
 
 --  VaultKeep Section
 
@@ -43,7 +47,9 @@ CREATE TABLE
         creatorId VARCHAR(255) NOT NULL COMMENT 'VaultKeep CreatroId',
         vaultId INT NOT NULL COMMENT 'VaultKeep VaultId',
         keepId INT NOT NULL COMMENT 'VaultKeep KeepId',
-        Foreign Key (creatorId) REFERENCES accounts (id),
-        Foreign Key (vaultId) REFERENCES vaults (id),
-        Foreign Key (keepId) REFERENCES keeps (id)
+        Foreign Key (creatorId) REFERENCES accounts (id) ON DELETE CASCADE,
+        Foreign Key (vaultId) REFERENCES vaults (id) ON DELETE CASCADE,
+        Foreign Key (keepId) REFERENCES keeps (id) ON DELETE CASCADE
     ) DEFAULT CHARSET utf8 COMMENT '';
+
+DROP TABLE vaultkeeps;

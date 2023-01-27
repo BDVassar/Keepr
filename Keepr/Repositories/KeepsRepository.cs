@@ -1,0 +1,59 @@
+namespace Keepr.Repositories;
+
+public class KeepsRepository
+{
+  private readonly IDbConnection _db;
+
+  public KeepsRepository(IDbConnection db)
+  {
+    _db = db;
+  }
+
+  internal Keep Create(Keep keep)
+  {
+    string sql = @"
+    INSERT INTO keeps
+      (creatorId, name, description, img, views)
+    VALUES
+      (@creatorId, @name, @description, @img, @views);
+      SELECT LAST_INSERT_ID();";
+    int keepId = _db.ExecuteScalar<int>(sql, keep);
+    keep.Id = keepId;
+    return keep;
+  }
+
+  internal List<Keep> GetAll()
+  {
+    string sql = @"
+    SELECT
+    k.*,
+    a.*
+    FROM keeps k
+    JOIN accounts a ON k.creatorId = a.id;
+    ";
+    List<Keep> keeps = _db.Query<Keep, Account, Keep>(sql, (keep, account) =>
+    {
+      keep.Creator = account;
+      return keep;
+    }).ToList();
+    return keeps;
+  }
+
+  internal Keep GetOne(int id)
+  {
+    string sql = @"
+    SELECT
+    k.*,
+    a.*
+    FROM keeps k
+    JOIN accounts a ON k.creatorId = a.id
+    WHERE k.id = @id
+    ";
+    Keep keep = _db.Query<Keep, Account, Keep>(sql, (keep, account) =>
+    {
+      keep.Creator = account;
+      return keep;
+    }, new { id }).FirstOrDefault();
+    return keep;
+  }
+}
