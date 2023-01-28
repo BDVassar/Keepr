@@ -12,4 +12,37 @@ public class VaultKeepsController : ControllerBase
     _vaultKeepsService = vaultKeepsService;
     _auth = auth;
   }
+
+  [HttpPost]
+  [Authorize]
+  public async Task<ActionResult<VaultKeeps>> Create([FromBody] VaultKeeps vaultKeepsData)
+  {
+    try
+    {
+      Account account = await _auth.GetUserInfoAsync<Account>(HttpContext);
+      vaultKeepsData.CreatorId = account.Id;
+      VaultKeeps vaultKeeps = _vaultKeepsService.Create(vaultKeepsData);
+      vaultKeeps.Creator = account;
+      return vaultKeeps;
+    }
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
+  [HttpDelete("{id}")]
+  [Authorize]
+  public async Task<ActionResult<string>> Remove(int id)
+  {
+    try
+    {
+      Account account = await _auth.GetUserInfoAsync<Account>(HttpContext);
+      String message = _vaultKeepsService.Remove(account.Id, id);
+      return Ok(message);
+    }
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
 }

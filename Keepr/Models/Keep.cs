@@ -9,5 +9,10 @@ public class Keep
   public string img { get; set; }
   public int? views { get; set; }
   public int? kept { get; set; }
-  public Account Creator { get; set; }
+  public Profile Creator { get; set; }
+}
+
+public class KeepsInVault : Keep
+{
+  public int VaultKeepId { get; set; }
 }
