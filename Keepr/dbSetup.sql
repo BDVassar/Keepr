@@ -40,6 +40,13 @@ CREATE TABLE
 
 DROP TABLE vaults;
 
+SELECT v.*, a.*
+From vaults v
+    JOIN accounts a ON v.creatorId = a.id
+WHERE
+    v.creatorId = "6387d94b68790d657c7154ca"
+    AND isPrivate = 0;
+
 --  VaultKeep Section
 
 CREATE TABLE
