@@ -28,6 +28,12 @@ public class VaultsService
     return vault;
   }
 
+  internal List<Vault> GetMyVaults(string accountId)
+  {
+    List<Vault> vaults = _repo.GetMyVaults(accountId);
+    return vaults;
+  }
+
   internal Vault GetOne(string accountId, int id)
   {
     Vault vault = _repo.GetOne(id);
