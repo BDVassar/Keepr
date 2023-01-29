@@ -65,4 +65,10 @@ public class KeepsService
     if (deleted == false) throw new Exception($"{keep.Name} was not deleted");
     return $"{keep.Name} was deleted";
   }
+
+  internal List<Keep> GetKeepsByProfileId(string id)
+  {
+    List<Keep> keeps = _repo.GetKeepsByProfileId(id);
+    return keeps;
+  }
 }

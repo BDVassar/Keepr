@@ -51,6 +51,18 @@ public class VaultsRepository
     return vault;
   }
 
+  internal List<Vault> GetVaultsByProfileId(string id)
+  {
+    string sql = @"
+    SELECT
+    *
+    From vaults 
+    WHERE creatorId = @id AND isPrivate = 0;
+    ";
+    List<Vault> vaults = _db.Query<Vault>(sql, new { id }).ToList();
+    return vaults;
+  }
+
   internal bool Remove(int id)
   {
     string sql = @"

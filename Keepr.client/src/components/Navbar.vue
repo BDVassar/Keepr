@@ -1,29 +1,29 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+  <nav class="navbar navbar-expand-lg px-3 elevation-2">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center">
-        <img alt="logo" src="../assets/img/cw-logo.png" height="45" />
-      </div>
+      <button class="btn "> Home</button>
     </router-link>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarText"
-      aria-controls="navbarText"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
-          <router-link :to="{ name: 'About' }" class="btn text-success lighten-30 selectable text-uppercase">
-            About
-          </router-link>
+          <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Create
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">New Keep</a></li>
+              <li><a class="dropdown-item" href="#">New Vault</a></li>
+            </ul>
+          </div>
         </li>
       </ul>
+      <div class="p-">
+        <img src="../assets/img/Keepr logo.png" alt="">
+      </div>
       <!-- LOGIN COMPONENT HERE -->
       <Login />
     </div>
@@ -60,5 +60,4 @@ a:hover {
     height: 64px;
   }
 }
-
 </style>

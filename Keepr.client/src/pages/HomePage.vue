@@ -1,43 +1,59 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <div class="home-card p-5 bg-white rounded elevation-3">
-      <img
-        src="https://bcw.blob.core.windows.net/public/img/8600856373152463"
-        alt="CodeWorks Logo"
-        class="rounded-circle"
-      >
-      <h1 class="my-5 bg-dark text-white p-3 rounded text-center">
-        Vue 3 Starter
-      </h1>
-    </div>
+  <div class="container p-4">
+    <section class="masonry">
+      <div v-for="k in keeps" class="">
+        <KeepComponent :keep="k" />
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
+import { logger } from "../utils/Logger.js";
+import Pop from "../utils/Pop.js";
+import { keepsService } from "../services/KeepsService.js"
+import { onMounted, computed } from "vue";
+import { AppState } from "../AppState.js";
+
 export default {
   setup() {
-    return {}
+
+    async function getKeeps() {
+      try {
+        keepsService.getKeeps();
+      } catch (error) {
+        Pop.error(error)
+        logger.log(error)
+      }
+    }
+
+    onMounted(() => {
+      getKeeps();
+    })
+    return {
+      keeps: computed(() => AppState.keeps)
+    }
   }
 }
 </script>
 
 <style scoped lang="scss">
-.home {
-  display: grid;
-  height: 80vh;
-  place-content: center;
-  text-align: center;
-  user-select: none;
+.masonry {
+  columns: 4 200px;
+  column-gap: 1rem;
 
-  .home-card {
-    width: 50vw;
+  div {
+    width: 150px;
+    margin: 0 1rem 1rem 0;
+    display: inline-blockblo;
+    width: 100%;
+  }
 
-    >img {
-      height: 200px;
-      max-width: 200px;
-      width: 100%;
-      object-fit: contain;
-      object-position: center;
+  @for $i from 1 through 1000 {
+    div:nth-child(#{$i}) {
+      $h: (random(400) + 200)+px;
+      height: $h;
+      line-height: $h;
     }
   }
 }

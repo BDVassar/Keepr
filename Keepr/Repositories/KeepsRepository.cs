@@ -47,7 +47,7 @@ public class KeepsRepository
     a.*
     FROM keeps k
     JOIN accounts a ON k.creatorId = a.id
-    WHERE k.id = @id
+    WHERE k.id = @id;
     ";
     Keep keep = _db.Query<Keep, Account, Keep>(sql, (keep, account) =>
     {
@@ -81,5 +81,23 @@ public class KeepsRepository
     ";
     int rows = _db.Execute(sql, new { keepId });
     return rows > 0;
+  }
+
+  internal List<Keep> GetKeepsByProfileId(string id)
+  {
+    string sql = @"
+    SELECT
+    k.*,
+    a.*
+    FROM keeps k
+    JOIN accounts a ON k.creatorId = a.id
+    WHERE k.creatorId = @id;
+    ";
+    List<Keep> keeps = _db.Query<Keep, Profile, Keep>(sql, (keep, profile) =>
+    {
+      keep.Creator = profile;
+      return keep;
+    }, new { id }).ToList();
+    return keeps;
   }
 }

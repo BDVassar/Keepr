@@ -37,6 +37,12 @@ public class VaultsService
 
   }
 
+  internal List<Vault> GetVaultsByProfileId(string id)
+  {
+    List<Vault> vaults = _repo.GetVaultsByProfileId(id);
+    return vaults;
+  }
+
   internal string Remove(int id, string accountId)
   {
     Vault vault = this.GetOne(accountId, id);
