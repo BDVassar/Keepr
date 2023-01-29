@@ -71,7 +71,7 @@ public class VaultsRepository
     v.*,
     a.*
     From vaults v
-    JOINT accounts a ON v.creatorId = a.id
+    JOIN accounts a ON v.creatorId = a.id
     WHERE creatorId = @id AND isPrivate = 0;
     ";
     List<Vault> vaults = _db.Query<Vault, Account>(sql, (vault, account) =>
