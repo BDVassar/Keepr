@@ -41,6 +41,7 @@ export default {
 .masonry {
   columns: 4 200px;
   column-gap: 12px;
+
 }
 
 .brick {
@@ -48,12 +49,13 @@ export default {
   margin: 0 10px 10px 0;
   width: 100%;
   color: antiquewhite;
+  break-inside: avoid;
 }
 
 @for $index from 1 through 1000 {
   div:nth-child(#{$index}) {
     $h: (random(400) + 200)+px;
-    line-height: $h;
+    height: $h;
   }
 }
 </style>

@@ -11,16 +11,16 @@ class KeepService {
     AppState.keeps = res.data;
   }
 
-  async getProfileKeeps() {
-    const res = await api.get("api/profile/" + AppState.account.id + "/keeps")
-    logger.log("[Getting Profile Keeps", res.data)
-  }
-
   async setActiveKeep(keepId) {
     const res = await api.get("api/keeps/" + keepId);
     // logger.log("[SettingActiveKeep]", res.data);
     AppState.activeKeep = res.data;
     logger.log(AppState.activeKeep)
+  }
+
+  async getMyKeeps() {
+    AppState.myKeeps = AppState.keeps.filter((k) => k.creatorId == AppState.account.id)
+    logger.log("[My Keeps]", AppState.myKeeps)
   }
 }
 

@@ -7,8 +7,6 @@
       </p>
       <img class="rounded-circle mb-2" :src="keep.creator.picture" alt="" :title="keep.creator.name">
     </div>
-    <div>
-    </div>
   </section>
 
 </template>
@@ -46,14 +44,10 @@ export default {
 .main {
   background-position: center;
   background-size: cover;
+  height: inherit;
 }
 
 #name {
-
-  p {
-    position: relative;
-    top: 42%;
-  }
 
   img {
     height: 50px;
