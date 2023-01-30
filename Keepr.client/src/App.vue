@@ -1,12 +1,15 @@
 <template>
-  <header>
+  <header class="order-md-1 order-2 nbar sticky-bottom bg-light">
     <Navbar />
   </header>
-  <main>
+  <main class="order-md-2 order-1">
     <router-view />
   </main>
   <footer>
   </footer>
+  <ModalComponent id="KeepModal">
+    <KeepModal />
+  </ModalComponent>
 </template>
 
 <script>
@@ -28,5 +31,12 @@ export default {
 
 :root {
   --main-height: calc(100vh - 32px - 64px);
+}
+
+@media (min-width: 768px) {
+  .nbar {
+    position: sticky;
+    top: 0;
+  }
 }
 </style>

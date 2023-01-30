@@ -1,7 +1,7 @@
 <template>
   <div class="container p-4">
     <section class="masonry">
-      <div v-for="k in keeps" class="">
+      <div v-for="k in keeps" class="brick">
         <KeepComponent :keep="k" />
       </div>
     </section>
@@ -40,21 +40,20 @@ export default {
 <style scoped lang="scss">
 .masonry {
   columns: 4 200px;
-  column-gap: 1rem;
+  column-gap: 12px;
+}
 
-  div {
-    width: 150px;
-    margin: 0 1rem 1rem 0;
-    display: inline-blockblo;
-    width: 100%;
-  }
+.brick {
+  width: 150px;
+  margin: 0 10px 10px 0;
+  width: 100%;
+  color: antiquewhite;
+}
 
-  @for $i from 1 through 1000 {
-    div:nth-child(#{$i}) {
-      $h: (random(400) + 200)+px;
-      height: $h;
-      line-height: $h;
-    }
+@for $index from 1 through 1000 {
+  div:nth-child(#{$index}) {
+    $h: (random(400) + 200)+px;
+    line-height: $h;
   }
 }
 </style>

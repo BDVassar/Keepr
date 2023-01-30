@@ -13,6 +13,8 @@ public class VaultKeepsService
 
   internal VaultKeeps Create(VaultKeeps vaultKeepsData)
   {
+    Vault vault = _vaultsService.GetOne(vaultKeepsData.CreatorId, vaultKeepsData.VaultId);
+    if (vault.CreatorId != vaultKeepsData.CreatorId) throw new Exception("This is not your Vault.");
     VaultKeeps vaultKeeps = _repo.Create(vaultKeepsData);
     return vaultKeeps;
   }
