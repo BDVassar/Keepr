@@ -22,6 +22,13 @@ class KeepService {
     AppState.myKeeps = AppState.keeps.filter((k) => k.creatorId == AppState.account.id)
     // logger.log("[My Keeps]", AppState.myKeeps)
   }
+
+  async createKeep(keepData) {
+    const res = await api.post("api/keeps", keepData);
+    logger.log("[Creating Keep]", res.data)
+    AppState.keeps.push(res.data)
+    AppState.myKeeps.push(res.data)
+  }
 }
 
 export const keepsService = new KeepService();

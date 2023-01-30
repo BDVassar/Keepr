@@ -54,7 +54,7 @@ export default {
 
 @for $index from 1 through 1000 {
   div:nth-child(#{$index}) {
-    $h: (random(400) + 200)+px;
+    $h: (random(440) + 200)+px;
     height: $h;
   }
 }
