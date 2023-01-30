@@ -33,10 +33,18 @@
                   </ul>
                   <button class="btn btn-primary">save</button>
                 </div>
-                <div class="col-1 pb-2 pe-5">
-                  <router-link :to="{ name: 'Profile' }">
-                    <img :src="keep.creator.picture" alt="" class="rounded-circle creatorimg" data-bs-dismiss="modal">
-                  </router-link>
+                <div class="col-4 pb-2">
+                  <section class="row flex-">
+                    <div class="col-9 text-end d-flex align-items-center justify-content-end">
+                      <router-link :to="{ name: 'Profile' }">
+                        <img :src="keep.creator.picture" alt="" class="rounded-circle creatorimg"
+                          data-bs-dismiss="modal">
+                      </router-link>
+                    </div>
+                    <div class="col-3 p-0 d-flex align-items-center">
+                      <p class="m-0">{{ keep.creator.name }}</p>
+                    </div>
+                  </section>
                 </div>
               </section>
             </div>

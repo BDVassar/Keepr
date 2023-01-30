@@ -61,12 +61,18 @@ public class VaultsRepository
   {
     string sql = @"
     SELECT
-    *
-    FROM vaults
-    WHERE id = @id;
+    v.*,
+    a.*
+    FROM vaults v
+    JOIN accounts a ON v.creatorId = a.id
+    WHERE v.id = @id;
     ";
 
-    Vault vault = _db.Query<Vault>(sql, new { id }).FirstOrDefault();
+    Vault vault = _db.Query<Vault, Account, Vault>(sql, (vault, account) =>
+    {
+      vault.creator = account;
+      return vault;
+    }, new { id }).FirstOrDefault();
     return vault;
   }
 
