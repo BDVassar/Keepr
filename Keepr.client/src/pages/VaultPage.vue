@@ -1,7 +1,8 @@
 <template>
   <div v-if="vault" class="container p-4">
-    <section class="row justify-content-center accountcover rounded"
-      :style="{ backgroundImage: `url('${vault.img}')` }">
+    <section class="row justify-content-center">
+      <section class="col-7 accountcover rounded" :style="{ backgroundImage: `url('${vault.img}')` }">
+      </section>
     </section>
     <section class="row justify-content-center">
       <section class="col-2 text-center">
