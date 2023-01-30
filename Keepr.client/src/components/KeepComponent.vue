@@ -1,11 +1,16 @@
 <template>
-  <section class="row m-1 main elevation-3 rounded" :style="{ backgroundImage: `url('${keep.img}')` }">
-    <div @click="setActiveKeep(keep.id)" id="name" class=" selectable d-flex justify-content-between align-items-end"
-      data-bs-toggle="modal" data-bs-target="#KeepModal">
+  <section @click="setActiveKeep(keep.id)" id="name"
+    class="row m-1 main elevation-3 rounded  justify-content-between align-items-end selectable"
+    :style="{ backgroundImage: `url('${keep.img}')` }">
+    <div class="col-9" data-bs-toggle="modal" data-bs-target="#KeepModal">
       <p class="m-0 fw-bold fs-5">
         {{ keep.name }}
       </p>
-      <img class="rounded-circle mb-2" :src="keep.creator.picture" alt="" :title="keep.creator.name">
+    </div>
+    <div class="col-3">
+      <router-link :to="{ name: 'Profile', params: { id: keep.creator.id } }">
+        <img :src="keep.creator.picture" alt="" class="rounded-circle mb-2">
+      </router-link>
     </div>
   </section>
 

@@ -15,12 +15,12 @@ class KeepService {
     const res = await api.get("api/keeps/" + keepId);
     // logger.log("[SettingActiveKeep]", res.data);
     AppState.activeKeep = res.data;
-    logger.log(AppState.activeKeep)
+    // logger.log(AppState.activeKeep)
   }
 
   async getMyKeeps() {
     AppState.myKeeps = AppState.keeps.filter((k) => k.creatorId == AppState.account.id)
-    logger.log("[My Keeps]", AppState.myKeeps)
+    // logger.log("[My Keeps]", AppState.myKeeps)
   }
 }
 
