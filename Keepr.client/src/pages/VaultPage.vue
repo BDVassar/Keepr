@@ -1,7 +1,12 @@
 <template>
   <div v-if="vault" class="container p-4">
     <section class="row justify-content-center">
-      <section class="col-7 accountcover rounded" :style="{ backgroundImage: `url('${vault.img}')` }">
+      <section class="col-7 pb-5 d-flex flex-column justify-content-end accountcover rounded"
+        :style="{ backgroundImage: `url('${vault.img}')` }">
+        <section class="row text-center">
+          <h1 class="text-light">{{ vault.name }}</h1>
+          <h5 class="text-light"> By: {{ vault.creator.name }}</h5>
+        </section>
       </section>
     </section>
     <section class="row justify-content-center">
