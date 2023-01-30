@@ -22,7 +22,6 @@ public class ProfilesController : ControllerBase
   {
     try
     {
-
       Profile profile = _profilesService.Get(id);
       return Ok(profile);
     }
