@@ -1,18 +1,21 @@
 <template>
-  <section class="row m-1 main elevation-3 rounded" :style="{ backgroundImage: `url('${vault.img}')` }">
-    <section id="name" class=" selectable d-flex justify-content-between align-items-end">
-      <section>
-        <p class="m-0 fw-bold fs-5 col-6 text-light">
-          {{ vault.name }}
-        </p>
-      </section>
-      <section>
-        <p v-if="vault.isPrivate" class="m-0 fw-bold fs-5 col-6 text-light mdi mdi-lock"></p>
-      </section>
+  <router-link :to="{ name: 'Vault', params: { id: vault.id } }">
 
+    <section class="row m-1 main elevation-3 rounded" :style="{ backgroundImage: `url('${vault.img}')` }">
+      <section id="name" class=" selectable d-flex justify-content-between align-items-end">
+        <section>
+          <p class="m-0 fw-bold fs-5 col-6 text-light">
+            {{ vault.name }}
+          </p>
+        </section>
+        <section>
+          <p v-if="vault.isPrivate" class="m-0 fw-bold fs-5 col-6 text-light mdi mdi-lock"></p>
+        </section>
+
+      </section>
     </section>
-  </section>
 
+  </router-link>
 </template>
 
 
