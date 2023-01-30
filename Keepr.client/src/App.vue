@@ -10,6 +10,12 @@
   <ModalComponent id="KeepModal">
     <KeepModal />
   </ModalComponent>
+  <FormModalComponent id="KeepForm">
+    <KeepForm />
+  </FormModalComponent>
+  <FormModalComponent id="VaultForm">
+    <VaultForm />
+  </FormModalComponent>
 </template>
 
 <script>

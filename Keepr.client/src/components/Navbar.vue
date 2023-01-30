@@ -9,8 +9,8 @@
           Create
         </button>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">New Keep</a></li>
-          <li><a class="dropdown-item" href="#">New Vault</a></li>
+          <li data-bs-toggle="modal" data-bs-target="#KeepForm"><a class="dropdown-item" href="#">New Keep</a></li>
+          <li data-bs-toggle="modal" data-bs-target="#VaultForm"><a class="dropdown-item" href="#">New Vault</a></li>
         </ul>
       </div>
       <div class="order-lg-3 logo col-2 p-3">
