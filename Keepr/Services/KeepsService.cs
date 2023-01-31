@@ -27,7 +27,7 @@ public class KeepsService
   internal Keep GetOne(int id, string accountId)
   {
     Keep keep = _repo.GetOne(id);
-    if (keep == null)
+    if (keep.Name == null && keep.kept == 0 && keep.Description == null && keep.CreatorId == null)
     {
       throw new Exception("No Keep by that Id");
     }
@@ -48,8 +48,13 @@ public class KeepsService
     keepData.Name = keepData.Name ?? keep.Name;
     keepData.Description = keepData.Description ?? keep.Description;
     keepData.img = keepData.img ?? keep.img;
-    keepData.views = keepData.views ?? keep.views;
-    keepData.kept = keepData.kept ?? keep.kept;
+    if (keep.CreatorId != accountId)
+    {
+      keepData.views = keepData.views ?? keep.views;
+      keepData.kept = keepData.kept ?? keep.kept;
+    }
+    keepData.views = keep.views;
+    keepData.kept = keep.kept;
     keepData.CreatorId = keep.CreatorId;
     Boolean updated = _repo.Edit(keepData);
     if (updated == false)
@@ -66,7 +71,7 @@ public class KeepsService
     {
       throw new Exception("You do not have permission to delete this Keep.");
     }
-    bool deleted = _repo.Remove(keepId);
+    bool deleted = _repo.Remove(keep.Id);
     if (deleted == false) throw new Exception($"{keep.Name} was not deleted");
     return $"{keep.Name} was deleted";
   }
