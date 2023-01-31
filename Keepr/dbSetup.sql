@@ -9,6 +9,8 @@ CREATE TABLE
         coverImg VARCHAR(255) COMMENT 'User Cover Image'
     ) default charset utf8 COMMENT '';
 
+    DROP TABLE accounts;
+
 -- Keeps Section
 
 CREATE TABLE
