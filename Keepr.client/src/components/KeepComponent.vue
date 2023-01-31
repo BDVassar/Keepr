@@ -18,12 +18,12 @@
           class="btn btn--outline text-danger mdi mdi-delete"></button>
       </section>
     </div>
-    <section class="col-9 d-flex align-items-end">
+    <section class="col-8 col-md-9 d-flex align-items-end">
       <p class="m-0 fw-bold fs-5">
         {{ keep.name }}
       </p>
     </section>
-    <section class="col-3 d-flex align-items-end">
+    <section class="col-4 col-md-3 d-flex align-items-end">
       <img @click.stop="router.push({ name: 'Profile', params: { id: keep.creator.id } })" :src="keep.creator.picture"
         alt="" class="rounded-circle mb-2" :title="keep.creator.name">
     </section>

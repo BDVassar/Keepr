@@ -1,11 +1,11 @@
 <template>
   <div class="container-fluid elevation-2">
     <section class="row justify-content-between">
-      <div class="col-2 d-flex">
+      <div class=" order-2 order-md-1 col-2 d-flex">
         <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-          <button class="btn order-lg-1"> Home</button>
+          <button class="btn d-md-block d-none"> Home</button>
         </router-link>
-        <button class="btn dropdown-toggle order-lg-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <button class=" btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           Create
         </button>
         <ul class="dropdown-menu">
@@ -13,10 +13,10 @@
           <li @click.prevent="openVaultModal()"><a class="dropdown-item" href="#">New Vault</a></li>
         </ul>
       </div>
-      <div class="order-lg-3 logo col-2 p-3">
+      <div class="order-1 logo col-2 p-3">
         <img src="../assets/img/Keepr logo.png" alt="">
       </div>
-      <div class="order-lg-4 col-1 d-flex justify-content-center align-items-center">
+      <div class="order-3 col-1 d-flex justify-content-center align-items-center">
         <!-- LOGIN COMPONENT HERE -->
         <Login />
       </div>

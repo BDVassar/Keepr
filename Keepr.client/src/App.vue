@@ -42,10 +42,16 @@ export default {
   --main-height: calc(100vh - 32px - 64px);
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
+  body {
+    padding-bottom: calc(32px - 64px);
+  }
+
   .nbar {
-    position: sticky;
-    top: 0;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: 10000;
   }
 }
 </style>
