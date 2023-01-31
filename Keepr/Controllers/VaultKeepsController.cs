@@ -20,6 +20,7 @@ public class VaultKeepsController : ControllerBase
     try
     {
       Account account = await _auth.GetUserInfoAsync<Account>(HttpContext);
+      if (account == null) throw new Exception("you need to log in to Do this!");
       vaultKeepsData.CreatorId = account.Id;
       VaultKeeps vaultKeeps = _vaultKeepsService.Create(vaultKeepsData);
       vaultKeeps.Creator = account;

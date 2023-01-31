@@ -22,16 +22,15 @@
             </div>
             <div class="col-12 d-flex flex-column justify-content-end">
               <section class="row justify-content-between pe-4">
-                <div class="col-4 f-flex flex-row">
-                  <button class="btn dropdown-toggle order-lg-2" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Plants
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">New Keep</a></li>
-                    <li><a class="dropdown-item" href="#">New Vault</a></li>
-                  </ul>
-                  <button class="btn btn-primary">save</button>
+                <div class="col-7">
+                  <div class="input-group">
+                    <select required v-model="relationship.vaultId" class="form-select" id="inputGroupSelect04"
+                      aria-label="Example select with button addon">
+                      <option selected>Choose...</option>
+                      <option v-for="v in vaults" :value="v.id">{{ v.name }}</option>
+                    </select>
+                    <button @click="CreateVaultKeep(keep.id)" class="btn btn-primary" type="button">Button</button>
+                  </div>
                 </div>
                 <div class="col-4 pb-2">
                   <section class="row flex-">
@@ -58,11 +57,36 @@
 
 <script>
 import { AppState } from '../AppState';
-import { computed, reactive, onMounted } from 'vue';
+import { computed, reactive, onMounted, ref } from 'vue';
+import Pop from "../utils/Pop.js";
+import { logger } from "../utils/Logger.js";
+import { vaultKeepsService } from "../services/VaultKeepsService.js";
+import { useRoute } from "vue-router";
+import { Modal } from "bootstrap";
+import { router } from "../router.js";
 export default {
   setup() {
+    const route = useRoute();
+    router;
+    const relationship = ref({});
     return {
-      keep: computed(() => AppState.activeKeep)
+      relationship,
+      keep: computed(() => AppState.activeKeep),
+      vaults: computed(() => AppState.myVaults),
+
+      async CreateVaultKeep(keepId) {
+        try {
+          await vaultKeepsService.CreateVaultKeep({
+            ...relationship.value,
+            keepId: keepId,
+          })
+          Modal.getOrCreateInstance("#KeepModal").hide();
+          router.push({ name: 'Vault', params: { id: relationship.value.vaultId } })
+        } catch (error) {
+          Pop.error(error);
+          logger.error(error);
+        }
+      },
     }
   }
 };

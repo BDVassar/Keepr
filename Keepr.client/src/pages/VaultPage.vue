@@ -15,7 +15,7 @@
       </section>
     </section>
 
-    <section v-if="keeps" class="masonry">
+    <section v-if="keeps" class="masonry pb-4">
       <div v-for="k in keeps" class="brick">
         <KeepComponent :keep="k" />
       </div>
