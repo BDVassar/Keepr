@@ -24,18 +24,23 @@ public class KeepsService
     return keeps;
   }
 
-  internal Keep GetOne(int id)
+  internal Keep GetOne(int id, string accountId)
   {
     Keep keep = _repo.GetOne(id);
     if (keep == null)
     {
       throw new Exception("No Keep by that Id");
     }
+    if (keep.CreatorId != accountId)
+    {
+      keep.views++;
+      _repo.Edit(keep);
+    }
     return keep;
   }
   internal Keep Edit(Keep keepData, string accountId)
   {
-    Keep keep = this.GetOne(keepData.Id);
+    Keep keep = this.GetOne(keepData.Id, accountId);
     if (keep.CreatorId != accountId)
     {
       throw new Exception("You do not have permission to edit this Keep.");
@@ -56,7 +61,7 @@ public class KeepsService
 
   internal String Remove(string accountId, int keepId)
   {
-    Keep keep = this.GetOne(keepId);
+    Keep keep = this.GetOne(keepId, accountId);
     if (keep.CreatorId != accountId)
     {
       throw new Exception("You do not have permission to delete this Keep.");
