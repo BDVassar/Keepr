@@ -12,18 +12,18 @@
 
       <div class=" col-7 form-floating mb-3">
         <input maxlength="40" v-model="accountInfo.name" type="text" class="form-control-plaintext border-bottom"
-          id="floatingEmptyPlaintextInput" placeholder="name@example.com">
-        <label for="floatingEmptyPlaintextInput">Name...</label>
+          id="name" placeholder="name">
+        <label for="name">Name...</label>
       </div>
       <div class="col-7 form-floating mb-3">
         <input maxlength="240" v-model="accountInfo.picture" type="text" class="form-control-plaintext border-bottom"
-          id="floatingEmptyPlaintextInput" placeholder="name@example.com">
-        <label for="floatingEmptyPlaintextInput">Picture...</label>
+          id="picture" placeholder="picture">
+        <label for="picture">Picture...</label>
       </div>
       <div class="col-7 form-floating mb-3">
         <input maxlength="240" v-model="accountInfo.coverImg" type="text" class="form-control-plaintext border-bottom"
-          id="floatingEmptyPlaintextInput" placeholder="name@example.com">
-        <label for="floatingEmptyPlaintextInput">Cover Image...</label>
+          id="coverImg" placeholder="coverImg">
+        <label for="coverImg">Cover Image...</label>
       </div>
     </section>
     <section class="row justify-content-end p-4">

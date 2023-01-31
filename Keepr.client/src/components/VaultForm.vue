@@ -12,13 +12,13 @@
 
       <div class=" col-7 form-floating mb-3">
         <input maxlength="30" v-model="vaultData.name" type="text" class="form-control-plaintext border-bottom"
-          id="floatingEmptyPlaintextInput" placeholder="name@example.com">
-        <label for="floatingEmptyPlaintextInput">Title...</label>
+          id="name" placeholder="name">
+        <label for="name">Title...</label>
       </div>
       <div class="col-7 form-floating mb-3">
         <input maxlength="240" v-model="vaultData.img" type="text" class="form-control-plaintext border-bottom"
-          id="floatingEmptyPlaintextInput" placeholder="name@example.com">
-        <label for="floatingEmptyPlaintextInput">URL...</label>
+          id="name" placeholder="name">
+        <label for="name">URL...</label>
       </div>
       <div class="col-7 form-floating mb-3">
         <textarea maxlength="240" v-model="vaultData.description" type="text"
