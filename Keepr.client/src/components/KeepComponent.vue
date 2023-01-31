@@ -9,7 +9,7 @@
       </div>
       <section class="col-3 text-end">
         <button @click.stop="removeKeep(keep.id)" v-if="account.id == keep.creatorId"
-          class="btn btn--outline text-danger mdi mdi-delete"></button>
+          class="btn btn--outline text-danger mdi mdi-delete" name="delete"></button>
       </section>
     </div>
     <div v-else>
