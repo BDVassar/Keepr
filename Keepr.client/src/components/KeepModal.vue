@@ -18,7 +18,7 @@
             </div>
             <div class="col-12 d-flex flex-column justify-content-center text-center">
               <h1>{{ keep.name }}</h1>
-              <p class="px-5">{{ keep.description }}</p>
+              <p class="px-5 text-start">{{ keep.description }}</p>
             </div>
             <div class="col-12 d-flex flex-column justify-content-end">
               <section class="row justify-content-between pe-4">
