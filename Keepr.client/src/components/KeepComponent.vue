@@ -1,16 +1,20 @@
 <template>
   <section @click="setActiveKeep(keep.id)" id="name"
-    class="row m-1 main elevation-3 rounded  justify-content-between align-items-end selectable"
+    class="row m-1 main elevation-3 rounded  justify-content-between selectable"
     :style="{ backgroundImage: `url('${keep.img}')` }" data-bs-toggle="modal" data-bs-target="#KeepModal">
-    <div class="col-9">
+    <section class="col-12 text-end">
+      <button @click.stop="removeKeep(keep.id)" v-if="account.id == keep.creatorId"
+        class="btn btn--outline text-danger mdi mdi-delete"></button>
+    </section>
+    <section class="col-9 d-flex align-items-end">
       <p class="m-0 fw-bold fs-5">
         {{ keep.name }}
       </p>
-    </div>
-    <div class="col-3">
+    </section>
+    <section class="col-3 d-flex align-items-end">
       <img @click.stop="router.push({ name: 'Profile', params: { id: keep.creator.id } })" :src="keep.creator.picture"
         alt="" class="rounded-circle mb-2">
-    </div>
+    </section>
   </section>
 
 </template>
@@ -32,12 +36,23 @@ export default {
     router
     return {
       router,
+      account: computed(() => AppState.account),
       async setActiveKeep(keepId) {
         try {
+          await Pop.confirm("Are you sure you want to delete this Keep?")
           await keepsService.setActiveKeep(keepId);
         } catch (error) {
           Pop.error(error)
           logger.log(error)
+        }
+      },
+
+      async removeKeep(keepId) {
+        try {
+          await keepsService.removeKeep(keepId);
+        } catch (error) {
+          Pop.error(error);
+          logger.log(error);
         }
       }
 

@@ -2,8 +2,13 @@
   <router-link :to="{ name: 'Vault', params: { id: vault.id } }">
 
     <section class="row m-1 main elevation-3 rounded" :style="{ backgroundImage: `url('${vault.img}')` }">
-      <section id="name" class=" selectable d-flex justify-content-between align-items-end">
+      <section class="col-12 text-end">
+        <button @click.stop="removeVault(vault.id)" v-if="account.id == vault.creatorId"
+          class="btn btn--outline text-danger mdi mdi-delete"></button>
+      </section>
+      <section id="name" class="col-12 selectable d-flex justify-content-between align-items-end">
         <section>
+
           <p class="m-0 fw-bold fs-5 col-6 text-light">
             {{ vault.name }}
           </p>
@@ -24,7 +29,7 @@ import { AppState } from '../AppState';
 import { computed, reactive, onMounted } from 'vue';
 import Pop from "../utils/Pop.js";
 import { logger } from "../utils/Logger.js";
-import { keepsService } from "../services/KeepsService.js";
+import { vaultsService } from "../services/VaultsService.js";
 export default {
   props: ({
     vault: { type: Object, required: true }
@@ -32,7 +37,16 @@ export default {
   setup() {
 
     return {
+      account: computed(() => AppState.account),
 
+      async removeVault(vaultId) {
+        try {
+          await vaultsService.removeVault(vaultId);
+        } catch (error) {
+          Pop.error(error);
+          logger.log(error);
+        }
+      }
     }
   }
 };
