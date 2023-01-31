@@ -13,7 +13,7 @@ class KeepService {
 
   async setActiveKeep(keepId) {
     const res = await api.get("api/keeps/" + keepId);
-    logger.log("[SettingActiveKeep]", res.data);
+    // logger.log("[SettingActiveKeep]", res.data);
     AppState.activeKeep = res.data;
     // logger.log(AppState.activeKeep)
   }
@@ -23,19 +23,19 @@ class KeepService {
     // logger.log("[my keeps]", res.data)
     const mykeeps = res.data.filter((k) => k.creatorId == AppState.account.id);
     AppState.myKeeps = mykeeps;
-    logger.log("[My Keeps]", AppState.myKeeps)
+    // logger.log("[My Keeps]", AppState.myKeeps)
   }
 
   async createKeep(keepData) {
     const res = await api.post("api/keeps", keepData);
-    logger.log("[Creating Keep]", res.data)
+    // logger.log("[Creating Keep]", res.data)
     AppState.keeps.push(res.data)
     AppState.myKeeps.push(res.data)
   }
 
   async removeKeep(keepId) {
     const res = await api.delete("api/keeps/" + keepId);
-    logger.log("[Deleting Keep]", res.data);
+    // logger.log("[Deleting Keep]", res.data);
     let index = AppState.keeps.findIndex((k) => k.id == keepId);
     AppState.keeps.splice(index, 1);
   }

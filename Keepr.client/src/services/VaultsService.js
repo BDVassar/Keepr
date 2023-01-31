@@ -12,19 +12,19 @@ class VaultsService {
 
   async GetVaultsKeeps(vaultId) {
     const res = await api.get("api/vaults/" + vaultId + "/keeps");
-    logger.log("[Getting Active Vault Keeps]", res.data);
+    // logger.log("[Getting Active Vault Keeps]", res.data);
     AppState.activeVaultsKeeps = res.data;
   }
 
   async CreateVault(vaultData) {
     const res = await api.post("api/vaults", vaultData);
-    logger.log("[Creating Vault]", res.data);
+    // logger.log("[Creating Vault]", res.data);
     AppState.myVaults.push(res.data);
   }
 
   async removeVault(vaultId) {
     const res = await api.delete("api/vaults/" + vaultId);
-    logger.log(res.data)
+    // logger.log(res.data)
     let index = AppState.myVaults.findIndex((v) => v.id == vaultId);
     AppState.myVaults.splice(index, 1)
   }
