@@ -25,7 +25,7 @@
     </section>
     <section class="col-3 d-flex align-items-end">
       <img @click.stop="router.push({ name: 'Profile', params: { id: keep.creator.id } })" :src="keep.creator.picture"
-        alt="" class="rounded-circle mb-2">
+        alt="" class="rounded-circle mb-2" :title="keep.creator.name">
     </section>
   </section>
 

@@ -2,10 +2,10 @@
   <div v-if="keep">
     <div class="modal-body container p-0">
       <section class="row">
-        <div class="col-6 d-flex">
+        <div class=" order-1 col-12  col-md-6 d-flex">
           <img :src="keep.img" alt="" class="img-fluid rounded-start">
         </div>
-        <div class="col-6 d-flex">
+        <div class=" order-2 col-12 col-md-6 d-flex">
           <section class="row">
             <div class="col-12">
               <section class="row justify-content-center pt-5">
