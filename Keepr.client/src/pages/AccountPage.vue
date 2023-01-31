@@ -43,15 +43,6 @@ import { accountService } from "../services/AccountService.js";
 export default {
   setup() {
 
-    async function getKeeps() {
-      try {
-        keepsService.getKeeps();
-      } catch (error) {
-        Pop.error(error)
-        logger.log(error)
-      }
-    }
-
     async function getMyVaults() {
       try {
         await accountService.getAccountVaults();
@@ -71,7 +62,6 @@ export default {
     }
 
     onMounted(() => {
-      getKeeps();
       getMyVaults();
       getMyKeeps();
     })
