@@ -7,17 +7,18 @@
       <section class="col-12 text-center">
         <section class="row justify-content-end">
           <section class="col-1">
-            <button @click="editAccount()" class=" btn fs-3 mdi mdi-account-edit-outline"></button>
+            <button @click="editAccount()" class=" btn fs-3 mdi mdi-account-edit-outline" aria-label="edit account"
+              title="edit account"></button>
           </section>
         </section>
         <img :src="account.picture" alt="" class="accountpic moveUp rounded-circle elevation-5 border border-white">
-        <h1 class=" moveUp">{{ account.name }}</h1>
+        <h1 class=" moveUp text-shadow">{{ account.name }}</h1>
         <p class="moveUp" v-if="myVaults && myKeeps">{{ myVaults.length }} Vaults | {{ myKeeps.length }} Keeps</p>
       </section>
 
 
     </section>
-    <section class="row ps-5 mt-5">
+    <section class="row ps-5 mt-5 text-shadow">
       <h1>Vaults</h1>
     </section>
     <section v-if="myVaults" class="row">
@@ -25,7 +26,7 @@
         <VaultComponent :vault="v" />
       </section>
     </section>
-    <section class="row p-5">
+    <section class="row p-5 text-shadow">
       <h1>Keeps</h1>
     </section>
     <section v-if="myKeeps" class="masonry">
@@ -120,6 +121,9 @@ export default {
   background-position: center;
   background-size: cover;
   height: 500px;
+}
+.text-shadow {
+    text-shadow: 1px 1px 3px #484848;
 }
 </style>
 

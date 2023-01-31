@@ -7,11 +7,11 @@
       <section class="col-12 text-center">
         <section class="row"></section>
         <img :src="profile.picture" alt="" class="accountpic moveUp rounded-circle elevation-5 border border-white">
-        <h1 class=" moveUp">{{ profile.name }}</h1>
+        <h1 class=" moveUp  text-shadow">{{ profile.name }}</h1>
         <p class="moveUp" v-if="vaults && keeps">{{ vaults.length }} Vaults | {{ keeps.length }} Keeps</p>
       </section>
     </section>
-    <section class="row ps-5 mt-5">
+    <section class="row ps-5 mt-5 text-shadow">
       <h1>Vaults</h1>
     </section>
     <section v-if="vaults" class="row">
@@ -19,7 +19,7 @@
         <VaultComponent :vault="v" />
       </section>
     </section>
-    <section class="row p-5">
+    <section class="row p-5  text-shadow">
       <h1>Keeps</h1>
     </section>
     <section v-if="keeps" class="masonry">
@@ -119,6 +119,10 @@ export default {
   background-position: center;
   background-size: cover;
   height: 500px;
+}
+
+.text-shadow {
+    text-shadow: 2px 2px 4px #484848;
 }
 </style>
 

@@ -3,12 +3,12 @@
   <section class="row m-1 main elevation-3 rounded selectable" :style="{ backgroundImage: `url('${vault.img}')` }">
     <section class="col-12 text-end removecol">
       <button @click.stop="removeVault(vault.id)" v-if="account.id == vault.creatorId"
-        class="btn btn--outline text-danger mdi mdi-delete" aria-label="delete"></button>
+        class="btn btn--outline text-danger mdi mdi-delete" aria-label="delete" title="delete"></button>
     </section>
     <router-link class="d-flex" :to="{ name: 'Vault', params: { id: vault.id } }">
       <section id="name" class="col-12 detailscol d-flex justify-content-between align-items-end">
         <section>
-          <p class="m-0 fw-bold fs-5 col-6 text-light p-0">
+          <p class="m-0 fw-bold fs-5 col-6 text-light p-0 text-shadow">
             {{ vault.name }}
           </p>
         </section>
@@ -58,7 +58,7 @@ export default {
 .main {
   background-position: center;
   background-size: cover;
-  height: 200px;
+  height: 210px;
 
   .removecol {
     height: 25px;
@@ -76,5 +76,9 @@ export default {
     width: 50px;
     size: fill;
   }
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 4px #484848;
 }
 </style>

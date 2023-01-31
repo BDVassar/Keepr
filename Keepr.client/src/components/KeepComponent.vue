@@ -9,17 +9,17 @@
       </div>
       <section class="col-3 text-end">
         <button @click.stop="removeKeep(keep.id)" v-if="account.id == keep.creatorId"
-          class="btn btn--outline text-danger mdi mdi-delete" aria-label="delete"></button>
+          class="btn btn--outline text-danger mdi mdi-delete" aria-label="delete" title="delete"></button>
       </section>
     </div>
     <div v-else>
       <section class="col-12 text-end">
         <button @click.stop="removeKeep(keep.id)" v-if="account.id == keep.creatorId"
-          class="btn btn--outline text-danger mdi mdi-delete"></button>
+          class="btn btn--outline text-danger mdi mdi-delete" title="delete" aria-label="delete"></button>
       </section>
     </div>
     <section class="col-8 col-md-9 d-flex align-items-end">
-      <p class="m-0 fw-bold fs-5">
+      <p class="m-0 fw-bold fs-5 text-shadow">
         {{ keep.name }}
       </p>
     </section>
@@ -101,5 +101,9 @@ export default {
     width: 50px;
     size: fill;
   }
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 4px #484848;
 }
 </style>

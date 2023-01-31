@@ -3,9 +3,9 @@
     <section class="row justify-content-between">
       <div class=" order-2 order-md-1 col-2 d-flex">
         <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-          <button class="btn d-md-block d-none"> Home</button>
+          <button class="btn d-md-block d-none text-shadow"> Home</button>
         </router-link>
-        <button class=" btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <button class=" btn dropdown-toggle text-shadow" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           Create
         </button>
         <ul class="dropdown-menu">
@@ -45,5 +45,9 @@ export default {
 <style scoped>
 img {
   height: 50px;
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 4px #484848;
 }
 </style>
