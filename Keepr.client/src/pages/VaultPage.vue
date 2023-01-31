@@ -32,6 +32,7 @@ import { AppState } from "../AppState.js";
 import { accountService } from "../services/AccountService.js";
 import { useRoute } from "vue-router";
 import { vaultsService } from "../services/VaultsService.js";
+import { router } from "../router.js";
 
 export default {
   setup() {
@@ -43,6 +44,7 @@ export default {
       } catch (error) {
         Pop.error(error);
         logger.error(error);
+        router.push({ name: 'Home' })
       }
     }
     async function GetVaultsKeeps() {

@@ -16,6 +16,11 @@ class AccountService {
     // logger.log("[Getting Account Vaults]", res.data)
     AppState.myVaults = res.data;
   }
+  async editAccount(accountInfo) {
+    const res = await api.put('/account', accountInfo)
+    logger.log("[Account Edited", res.data)
+    AppState.account = res.data
+  }
 }
 
 export const accountService = new AccountService()

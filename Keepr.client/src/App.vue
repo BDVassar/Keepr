@@ -16,6 +16,9 @@
   <FormModalComponent id="VaultForm">
     <VaultForm />
   </FormModalComponent>
+  <FormModalComponent id="AccountForm">
+    <AccountForm />
+  </FormModalComponent>
 </template>
 
 <script>

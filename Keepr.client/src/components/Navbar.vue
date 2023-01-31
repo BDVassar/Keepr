@@ -9,8 +9,8 @@
           Create
         </button>
         <ul class="dropdown-menu">
-          <li data-bs-toggle="modal" data-bs-target="#KeepForm"><a class="dropdown-item" href="#">New Keep</a></li>
-          <li data-bs-toggle="modal" data-bs-target="#VaultForm"><a class="dropdown-item" href="#">New Vault</a></li>
+          <li @click.prevent="openKeepModal()"><a class="dropdown-item" href="#">New Keep</a></li>
+          <li @click.prevent="openVaultModal()"><a class="dropdown-item" href="#">New Vault</a></li>
         </ul>
       </div>
       <div class="order-lg-3 logo col-2 p-3">
@@ -26,9 +26,17 @@
 
 <script>
 import Login from './Login.vue'
+import { Modal } from "bootstrap"
 export default {
   setup() {
-    return {}
+    return {
+      openKeepModal() {
+        Modal.getOrCreateInstance('#KeepForm').show();
+      },
+      openVaultModal() {
+        Modal.getOrCreateInstance('#VaultForm').show();
+      }
+    }
   },
   components: { Login }
 }

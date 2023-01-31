@@ -20,9 +20,10 @@ class KeepService {
 
   async getMyKeeps() {
     const res = await api.get("api/keeps")
-    logger.log("[my keeps]", res.data)
-    AppState.myKeeps = res.data.filter((k) => k.creatorId == AppState.account.id)
-    // logger.log("[My Keeps]", AppState.myKeeps)
+    // logger.log("[my keeps]", res.data)
+    const mykeeps = res.data.filter((k) => k.creatorId == AppState.account.id);
+    AppState.myKeeps = mykeeps;
+    logger.log("[My Keeps]", AppState.myKeeps)
   }
 
   async createKeep(keepData) {
