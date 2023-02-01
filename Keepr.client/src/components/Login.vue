@@ -1,5 +1,5 @@
 <template>
-  <button class="btn selectable text-success darken-20 text-shadow text-uppercase my-2 my-lg-0" @click="login"
+  <button class="btn selectable text-success fw-bold darken-30 text-shadow text-uppercase my-2 my-lg-0" @click="login"
     v-if="!user.isAuthenticated">
     Login
   </button>
@@ -49,6 +49,6 @@ export default {
 
 <style lang="scss" scoped>
 .text-shadow {
-  text-shadow: 2px 2px 4px #484848;
+  text-shadow: 1px 1px 1px #767575;
 }
 </style>
