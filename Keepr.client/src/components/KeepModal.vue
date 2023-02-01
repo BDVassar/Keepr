@@ -23,7 +23,7 @@
             <div class="col-12 d-flex flex-column justify-content-end">
               <section class="row justify-content-between pe-4">
                 <div class="col-7">
-                  <div v-if="account == {}" class="input-group">
+                  <div v-if="user.isAuthenticated" class="input-group">
                     <select required v-model="relationship.vaultId" class="form-select" id="inputGroupSelect04"
                       aria-label="Example select with button addon">
                       <option selected>Choose...</option>
@@ -74,6 +74,7 @@ export default {
       keep: computed(() => AppState.activeKeep),
       vaults: computed(() => AppState.myVaults),
       account: computed(() => AppState.account),
+      user: computed(() => AppState.user),
 
       async CreateVaultKeep(keepId) {
         try {

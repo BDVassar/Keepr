@@ -9,8 +9,10 @@
           Create
         </button>
         <ul class="dropdown-menu">
-          <li @click.prevent="openKeepModal()"><a class="dropdown-item" href="#">New Keep</a></li>
-          <li @click.prevent="openVaultModal()"><a class="dropdown-item" href="#">New Vault</a></li>
+          <li @click.prevent="openKeepModal()" title="create keep" aria-label="create keep"><a class="dropdown-item"
+              href="#">New Keep</a></li>
+          <li @click.prevent="openVaultModal()" title="create vault" aria-label="create vault"><a class="dropdown-item"
+              href="#">New Vault</a></li>
         </ul>
       </div>
       <div class="order-1 logo col-2 p-3">

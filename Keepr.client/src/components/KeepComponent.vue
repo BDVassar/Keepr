@@ -1,10 +1,10 @@
 <template>
-  <section @click="setActiveKeep(keep.id)" id="name"
-    class="row m-1 main elevation-3 rounded  justify-content-between selectable"
+  <section @click="setActiveKeep(keep.id)" class="row m-1 main elevation-3 rounded  justify-content-between selectable"
     :style="{ backgroundImage: `url('${keep.img}')` }">
     <div v-if="keep.vaultKeepId" class="d-flex justify-content-between">
       <div class="col-7">
-        <button @click.stop="removeVaultKeep(keep.vaultKeepId)" class=" fs-5 btn mdi mdi-circle-off-outline text-light">
+        <button @click.stop="removeVaultKeep(keep.vaultKeepId)" class=" fs-5 btn mdi mdi-circle-off-outline text-light"
+          title="remove from vault" aria-label="remove from vault">
           Remove</button>
       </div>
       <section class="col-3 text-end">
@@ -25,7 +25,7 @@
     </section>
     <section class="col-4 col-md-3 d-flex align-items-end">
       <img @click.stop="router.push({ name: 'Profile', params: { id: keep.creator.id } })" :src="keep.creator.picture"
-        alt="" class="rounded-circle mb-2" :title="keep.creator.name">
+        alt="" class="rounded-circle mb-2" :title="keep.creator.name" :aria-label="keep.creator.name">
     </section>
   </section>
 
@@ -92,9 +92,6 @@ export default {
   background-position: center;
   background-size: cover;
   height: inherit;
-}
-
-#name {
 
   img {
     height: 50px;
@@ -102,6 +99,8 @@ export default {
     size: fill;
   }
 }
+
+
 
 .text-shadow {
   text-shadow: 2px 2px 4px #484848;
