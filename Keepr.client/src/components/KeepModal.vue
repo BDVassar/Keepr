@@ -29,7 +29,7 @@
                       <option selected>Choose...</option>
                       <option v-for="v in vaults" :value="v.id">{{ v.name }}</option>
                     </select>
-                    <button @click="CreateVaultKeep(keep.id)" class="btn btn-primary" type="button">Button</button>
+                    <button @click="CreateVaultKeep(keep.id)" class="btn btn-primary" type="button">Add</button>
                   </div>
                 </div>
                 <div class="col-4 pb-2">

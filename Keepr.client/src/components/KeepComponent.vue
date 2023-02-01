@@ -3,19 +3,22 @@
     :style="{ backgroundImage: `url('${keep.img}')` }">
     <div v-if="keep.vaultKeepId && keep.creatorId == vault.creatorId" class="d-flex justify-content-between">
       <div class="col-7">
-        <button @click.stop="removeVaultKeep(keep.vaultKeepId)" class="text-shadow fs-5 btn mdi mdi-circle-off-outline text-light"
-          title="remove from vault" aria-label="remove from vault">
+        <button @click.stop="removeVaultKeep(keep.vaultKeepId)"
+          class="text-shadow fs-5 btn mdi mdi-circle-off-outline text-light" title="remove from vault"
+          aria-label="remove from vault">
           Remove</button>
       </div>
       <section class="col-3 text-end">
         <button @click.stop="removeKeep(keep.id)" v-if="account.id == keep.creatorId"
-          class="text-shadow fs-4 btn btn--outline text-danger mdi mdi-delete" aria-label="delete" title="delete"></button>
+          class="text-shadow fs-4 btn btn--outline text-danger mdi mdi-delete" aria-label="delete"
+          title="delete"></button>
       </section>
     </div>
     <div v-else>
       <section class="col-12 text-end">
         <button @click.stop="removeKeep(keep.id)" v-if="account.id == keep.creatorId"
-          class="text-shadow fs-4 btn btn--outline text-danger mdi mdi-delete" title="delete" aria-label="delete"></button>
+          class="text-shadow fs-4 btn btn--outline text-danger mdi mdi-delete" title="delete"
+          aria-label="delete"></button>
       </section>
     </div>
     <section class="col-8 col-md-9 d-flex align-items-end">
@@ -23,7 +26,11 @@
         {{ keep.name }}
       </p>
     </section>
-    <section class="col-4 col-md-3 d-flex align-items-end">
+    <section v-if="account.id == keep.creatorId" class="col-4 col-md-3 d-flex align-items-end">
+      <img id="creator" @click.stop="router.push({ name: 'Account' })" :src="keep.creator.picture" alt=""
+        class="rounded-circle mb-2" :title="keep.creator.name" :aria-label="keep.creator.name">
+    </section>
+    <section v-else class="col-4 col-md-3 d-flex align-items-end">
       <img id="creator" @click.stop="router.push({ name: 'Profile', params: { id: keep.creator.id } })"
         :src="keep.creator.picture" alt="" class="rounded-circle mb-2" :title="keep.creator.name"
         :aria-label="keep.creator.name">

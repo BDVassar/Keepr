@@ -1,6 +1,6 @@
 <template>
   <div class="container p-4">
-    <section class="masonry">
+    <section class="masonry pb-5">
       <div v-for="k in keeps" class="brick">
         <KeepComponent :keep="k" />
       </div>

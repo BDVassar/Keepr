@@ -22,7 +22,7 @@
     <section class="row p-5  text-shadow">
       <h1>Keeps</h1>
     </section>
-    <section v-if="keeps" class="masonry">
+    <section v-if="keeps" class="masonry pb-5">
       <div v-for="k in keeps" class="brick">
         <KeepComponent :keep="k" />
       </div>
