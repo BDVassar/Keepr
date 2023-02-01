@@ -10,18 +10,18 @@
     </section>
     <section class="row justify-content-center">
 
-      <div class=" col-7 form-floating mb-3">
-        <input maxlength="40" v-model="accountInfo.name" type="text" class="form-control-plaintext border-bottom"
-          id="accountName" placeholder="name">
+      <div class=" col-7 col-md-7 form-floating mb-3">
+        <input required maxlength="40" v-model="accountInfo.name" type="text"
+          class="form-control-plaintext border-bottom" id="accountName" placeholder="name">
         <label for="name">Name...</label>
       </div>
       <div class="col-7 form-floating mb-3">
-        <input maxlength="240" v-model="accountInfo.picture" type="text" class="form-control-plaintext border-bottom"
+        <input required maxlength="240" v-model="accountInfo.picture" type="text" class="form-control-plaintext border-bottom"
           id="picture" placeholder="picture">
         <label for="picture">Picture...</label>
       </div>
       <div class="col-7 form-floating mb-3">
-        <input maxlength="240" v-model="accountInfo.coverImg" type="text" class="form-control-plaintext border-bottom"
+        <input required maxlength="240" v-model="accountInfo.coverImg" type="text" class="form-control-plaintext border-bottom"
           id="coverImg" placeholder="coverImg">
         <label for="coverImg">Cover Image...</label>
       </div>

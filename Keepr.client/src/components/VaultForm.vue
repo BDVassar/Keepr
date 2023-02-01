@@ -11,17 +11,17 @@
     <section class="row justify-content-center">
 
       <div class=" col-7 form-floating mb-3">
-        <input maxlength="30" v-model="vaultData.name" type="text" class="form-control-plaintext border-bottom"
+        <input required maxlength="30" v-model="vaultData.name" type="text" class="form-control-plaintext border-bottom"
           id="vaultName" placeholder="name">
         <label for="name">Title...</label>
       </div>
       <div class="col-7 form-floating mb-3">
-        <input maxlength="240" v-model="vaultData.img" type="text" class="form-control-plaintext border-bottom" id="URL"
-          placeholder="name">
+        <input required maxlength="240" v-model="vaultData.img" type="text" class="form-control-plaintext border-bottom"
+          id="URL" placeholder="name">
         <label for="name">URL...</label>
       </div>
       <div class="col-7 form-floating mb-3">
-        <textarea maxlength="240" v-model="vaultData.description" type="text"
+        <textarea required maxlength="240" v-model="vaultData.description" type="text"
           class="form-control-plaintext border-bottom" id="floatingEmptyPlaintextInput"
           placeholder="name@example.com"></textarea>
         <label for="floatingEmptyPlaintextInput">Description...</label>
@@ -31,7 +31,8 @@
       <div class="col-5">
         <p class="note m-0">Private Vaults can only be seen by you.</p>
         <div class="form-check">
-          <input v-model="vaultData.isPrivate" class="form-check-input" type="checkbox" id="flexCheckDefault">
+          <input required v-model="vaultData.isPrivate" class="form-check-input" type="checkbox" id="flexCheckDefault"
+            default="false">
           <label class="form-check-label" for="flexCheckDefault">
             Make Vault Private?
           </label>

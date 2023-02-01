@@ -11,17 +11,17 @@
     <section class="row justify-content-center">
 
       <div class=" col-7 form-floating mb-3">
-        <input v-model="keepData.name" type="text" class="form-control-plaintext border-bottom" id="name"
+        <input required v-model="keepData.name" type="text" class="form-control-plaintext border-bottom" id="name"
           placeholder="name">
         <label for="keepName">Title...</label>
       </div>
       <div class="col-7 form-floating mb-3">
-        <input v-model="keepData.img" type="text" class="form-control-plaintext border-bottom" id="img"
+        <input required v-model="keepData.img" type="text" class="form-control-plaintext border-bottom" id="img"
           placeholder="img">
         <label for="img">Image URL...</label>
       </div>
       <div class="col-7 form-floating mb-3">
-        <textarea v-model="keepData.description" type="text" class="form-control-plaintext border-bottom"
+        <textarea required v-model="keepData.description" type="text" class="form-control-plaintext border-bottom"
           id="description" placeholder="description"></textarea>
         <label for="description">Description...</label>
       </div>
