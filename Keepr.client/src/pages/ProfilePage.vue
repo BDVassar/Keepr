@@ -15,7 +15,7 @@
       <h1>Vaults</h1>
     </section>
     <section v-if="vaults" class="row">
-      <section v-for="v in vaults" class="col-3">
+      <section v-for="v in vaults" class="col-6 col-md-3">
         <VaultComponent :vault="v" />
       </section>
     </section>
@@ -106,6 +106,29 @@ export default {
   }
 }
 
+@media (max-width: 768px) {
+  .masonry {
+    columns: 4 150px;
+    column-gap: 12px;
+
+  }
+
+  .brick {
+    width: 150px;
+    margin: 0 10px 10px 0;
+    width: 100%;
+    color: antiquewhite;
+    break-inside: avoid;
+  }
+
+  @for $index from 1 through 1000 {
+    div:nth-child(#{$index}) {
+      $h: (random(440) + 200)+px;
+      height: $h;
+    }
+  }
+}
+
 .accountpic {
   height: 250px;
   width: 250px;
@@ -122,7 +145,7 @@ export default {
 }
 
 .text-shadow {
-    text-shadow: 2px 2px 4px #484848;
+  text-shadow: 2px 2px 4px #484848;
 }
 </style>
 
