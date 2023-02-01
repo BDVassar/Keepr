@@ -1,6 +1,11 @@
 <template>
   <div v-if="keep">
     <div class="modal-body container p-0">
+      <section class="row d-md-none d-block justify-content-end">
+        <div class="col-1">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+      </section>
       <section class="row">
         <div class=" order-1 col-12  col-md-6 d-flex">
           <img :src="keep.img" alt="" class="img-fluid rounded-start">
