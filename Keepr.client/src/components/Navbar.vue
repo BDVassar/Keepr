@@ -5,8 +5,8 @@
         <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
           <button class="btn d-md-block d-none text-shadow"> Home</button>
         </router-link>
-        <button id="create" class="btn dropdown-toggle text-shadow" type="button" data-bs-toggle="dropdown"
-          aria-expanded="false">
+        <button v-if="user.isAuthenticated" id="create" class="btn dropdown-toggle text-shadow" type="button"
+          data-bs-toggle="dropdown" aria-expanded="false">
           Create
         </button>
         <ul class="dropdown-menu">
@@ -30,9 +30,12 @@
 <script>
 import Login from './Login.vue'
 import { Modal } from "bootstrap"
+import { AppState } from "../AppState.js";
+import { computed } from "@vue/reactivity";
 export default {
   setup() {
     return {
+      user: computed(() => AppState.user),
       openKeepModal() {
         Modal.getOrCreateInstance('#KeepForm').show();
       },
