@@ -11,7 +11,7 @@ class VaultKeepsService {
   async removeVaultKeep(vaultKeepId) {
     const res = await api.delete("api/vaultkeeps/" + vaultKeepId);
     // logger.log("[deleted vaultkeep relationship]", res.data);
-    let index = AppState.activeVaultsKeeps.findIndex((k) => k.id == vaultKeepId);
+    let index = AppState.activeVaultsKeeps.findIndex((k) => k.vaultKeepId == vaultKeepId);
     AppState.activeVaultsKeeps.splice(index, 1);
   }
 }
