@@ -3,19 +3,19 @@
     :style="{ backgroundImage: `url('${keep.img}')` }">
     <div v-if="keep.vaultKeepId && keep.creatorId == vault.creatorId" class="d-flex justify-content-between">
       <div class="col-7">
-        <button @click.stop="removeVaultKeep(keep.vaultKeepId)" class=" fs-5 btn mdi mdi-circle-off-outline text-light"
+        <button @click.stop="removeVaultKeep(keep.vaultKeepId)" class="text-shadow fs-5 btn mdi mdi-circle-off-outline text-light"
           title="remove from vault" aria-label="remove from vault">
           Remove</button>
       </div>
       <section class="col-3 text-end">
         <button @click.stop="removeKeep(keep.id)" v-if="account.id == keep.creatorId"
-          class="btn btn--outline text-danger mdi mdi-delete" aria-label="delete" title="delete"></button>
+          class="text-shadow fs-4 btn btn--outline text-danger mdi mdi-delete" aria-label="delete" title="delete"></button>
       </section>
     </div>
     <div v-else>
       <section class="col-12 text-end">
         <button @click.stop="removeKeep(keep.id)" v-if="account.id == keep.creatorId"
-          class="btn btn--outline text-danger mdi mdi-delete" title="delete" aria-label="delete"></button>
+          class="text-shadow fs-4 btn btn--outline text-danger mdi mdi-delete" title="delete" aria-label="delete"></button>
       </section>
     </div>
     <section class="col-8 col-md-9 d-flex align-items-end">
@@ -110,7 +110,7 @@ export default {
   }
 }
 
-d .text-shadow {
+.text-shadow {
   text-shadow: 2px 2px 4px #484848;
 }
 </style>
