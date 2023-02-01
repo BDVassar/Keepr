@@ -83,7 +83,6 @@ export default {
             keepId: keepId,
           })
           Modal.getOrCreateInstance("#KeepModal").hide();
-          router.push({ name: 'Vault', params: { id: relationship.value.vaultId } })
         } catch (error) {
           Pop.error(error);
           logger.error(error);

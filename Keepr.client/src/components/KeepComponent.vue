@@ -76,6 +76,8 @@ export default {
 
       async removeVaultKeep(vaultKeepId) {
         try {
+          const confirm = await Pop.confirm("Are you sure you want to remove this Keep?")
+          if (!confirm) { return }
           await vaultKeepsService.removeVaultKeep(vaultKeepId);
         } catch (error) {
           Pop.error(error);
