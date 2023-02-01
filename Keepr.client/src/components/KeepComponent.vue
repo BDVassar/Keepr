@@ -1,7 +1,7 @@
 <template>
   <section @click="setActiveKeep(keep.id)" class="row m-1 main elevation-3 rounded  justify-content-between selectable"
     :style="{ backgroundImage: `url('${keep.img}')` }">
-    <div v-if="keep.vaultKeepId" class="d-flex justify-content-between">
+    <div v-if="keep.vaultKeepId && keep.creatorId == vault.creatorId" class="d-flex justify-content-between">
       <div class="col-7">
         <button @click.stop="removeVaultKeep(keep.vaultKeepId)" class=" fs-5 btn mdi mdi-circle-off-outline text-light"
           title="remove from vault" aria-label="remove from vault">
@@ -51,6 +51,7 @@ export default {
     return {
       router,
       account: computed(() => AppState.account),
+      vault: computed(() => AppState.activeVault),
       async setActiveKeep(keepId) {
         try {
           await keepsService.setActiveKeep(keepId);
