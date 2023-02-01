@@ -5,7 +5,8 @@
         <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
           <button class="btn d-md-block d-none text-shadow"> Home</button>
         </router-link>
-        <button class=" btn dropdown-toggle text-shadow" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <button id="create" class="btn dropdown-toggle text-shadow" type="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
           Create
         </button>
         <ul class="dropdown-menu">
@@ -56,6 +57,10 @@ img {
 @media (max-width: 768px) {
   #login {
     transform: translateX(-20px);
+  }
+
+  #create {
+    transform: translateX(-40px);
   }
 }
 </style>

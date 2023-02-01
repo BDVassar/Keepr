@@ -24,8 +24,9 @@
       </p>
     </section>
     <section class="col-4 col-md-3 d-flex align-items-end">
-      <img @click.stop="router.push({ name: 'Profile', params: { id: keep.creator.id } })" :src="keep.creator.picture"
-        alt="" class="rounded-circle mb-2" :title="keep.creator.name" :aria-label="keep.creator.name">
+      <img id="creator" @click.stop="router.push({ name: 'Profile', params: { id: keep.creator.id } })"
+        :src="keep.creator.picture" alt="" class="rounded-circle mb-2" :title="keep.creator.name"
+        :aria-label="keep.creator.name">
     </section>
   </section>
 
@@ -100,9 +101,13 @@ export default {
   }
 }
 
+@media (max-width: 768px) {
+  #creator {
+    transform: translateX(-20px);
+  }
+}
 
-
-.text-shadow {
+d .text-shadow {
   text-shadow: 2px 2px 4px #484848;
 }
 </style>
