@@ -18,7 +18,7 @@
       <div class="order-1 logo col-2 p-3">
         <img src="../assets/img/Keepr logo.png" alt="">
       </div>
-      <div class="order-3 col-1 d-flex justify-content-center align-items-center">
+      <div id="login" class="order-3 col-1 d-flex justify-content-center align-items-center login">
         <!-- LOGIN COMPONENT HERE -->
         <Login />
       </div>
@@ -51,5 +51,11 @@ img {
 
 .text-shadow {
   text-shadow: 2px 2px 4px #484848;
+}
+
+@media (max-width: 768px) {
+  #login {
+    transform: translateX(-20px);
+  }
 }
 </style>

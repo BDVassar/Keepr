@@ -58,4 +58,27 @@ export default {
     height: $h;
   }
 }
+
+@media (max-width: 768px) {
+  .masonry {
+    columns: 4 150px;
+    column-gap: 12px;
+
+  }
+
+  .brick {
+    width: 150px;
+    margin: 0 10px 10px 0;
+    width: 100%;
+    color: antiquewhite;
+    break-inside: avoid;
+  }
+
+  @for $index from 1 through 1000 {
+    div:nth-child(#{$index}) {
+      $h: (random(440) + 200)+px;
+      height: $h;
+    }
+  }
+}
 </style>
