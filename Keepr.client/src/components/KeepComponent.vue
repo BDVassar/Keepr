@@ -1,7 +1,7 @@
 <template>
   <section @click="setActiveKeep(keep.id)" class="row m-1 main elevation-3 rounded  justify-content-between selectable"
     :style="{ backgroundImage: `url('${keep.img}')` }">
-    <div v-if="keep.vaultKeepId && keep.creatorId == vault.creatorId" class="d-flex justify-content-between">
+    <div v-if="keep.vaultKeepId && account.id == vault.creatorId" class="d-flex justify-content-between">
       <div class="col-7">
         <button @click.stop="removeVaultKeep(keep.vaultKeepId)"
           class="text-shadow fs-5 btn mdi mdi-circle-off-outline text-light" title="remove from vault"
