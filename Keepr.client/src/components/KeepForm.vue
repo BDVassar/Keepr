@@ -13,7 +13,7 @@
       <div class=" col-7 form-floating mb-3">
         <input v-model="keepData.name" type="text" class="form-control-plaintext border-bottom" id="name"
           placeholder="name">
-        <label for="name">Title...</label>
+        <label for="keepName">Title...</label>
       </div>
       <div class="col-7 form-floating mb-3">
         <input v-model="keepData.img" type="text" class="form-control-plaintext border-bottom" id="img"

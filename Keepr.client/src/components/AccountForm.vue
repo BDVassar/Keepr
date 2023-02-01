@@ -12,7 +12,7 @@
 
       <div class=" col-7 form-floating mb-3">
         <input maxlength="40" v-model="accountInfo.name" type="text" class="form-control-plaintext border-bottom"
-          id="name" placeholder="name">
+          id="accountName" placeholder="name">
         <label for="name">Name...</label>
       </div>
       <div class="col-7 form-floating mb-3">
