@@ -42,7 +42,7 @@
                     <div class="col-9 text-end d-flex align-items-center justify-content-end">
                       <router-link :to="{ name: 'Profile', params: { id: keep.creator.id } }">
                         <img :src="keep.creator.picture" alt="" class="rounded-circle creatorimg"
-                          data-bs-dismiss="modal">
+                          data-bs-dismiss="modal" :title="keep.creator.name">
                       </router-link>
                     </div>
                     <div class="col-3 p-0 d-flex align-items-center">
