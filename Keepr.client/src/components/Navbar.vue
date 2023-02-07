@@ -17,7 +17,7 @@
         </ul>
       </div>
       <div class="order-1 logo col-2 p-3">
-        <img src="../assets/img/Keepr logo.png" alt="">
+        <img src="../assets/img/KeeprLogo.png" alt="">
       </div>
       <div id="login" class="order-3 col-1 d-flex justify-content-center align-items-center login">
         <!-- LOGIN COMPONENT HERE -->

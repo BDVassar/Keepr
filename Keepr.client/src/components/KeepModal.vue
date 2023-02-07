@@ -16,7 +16,7 @@
               <section class="row justify-content-center pt-5">
                 <div class="col-3 mdi mdi-eye-outline text-end">{{ keep.views }}</div>
                 <div class="col-3">
-                  <img src="../assets/img/kept Logo.png" alt="">
+                  <img src="../assets/img/keptLogo.png" alt="">
                   {{ keep.kept }}
                 </div>
               </section>
